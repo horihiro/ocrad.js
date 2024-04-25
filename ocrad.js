@@ -96054,6 +96054,7 @@ run();
 
 		var ret;
 		if(opt.raw){
+      API.quitFS();
 			ret = API.read_text('/out.txt');
 			API.delete_file('/out.txt');
 		}else{
@@ -96080,6 +96081,7 @@ run();
 	API.read_file              = function(filename){ return FS.readFile(filename, {encoding: 'binary'}) };
 	API.read_text              = function(filename){ return FS.readFile(filename, {encoding: 'utf8'}) };
 	API.delete_file            = function(filename){ return FS.unlink(filename) };
+  API.quitFS                 = function() { return FS.quit() };
 	API.version                = Module.cwrap('OCRAD_version', 'string');
 	API.open                   = Module.cwrap('OCRAD_open', 'number');
 	API.close                  = Module.cwrap('OCRAD_close', 'number', ['number']);
